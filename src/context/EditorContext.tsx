@@ -33,6 +33,7 @@ import {
 interface EditorContextType {
   // Project & Screen
   project: Project;
+  setProject: React.Dispatch<React.SetStateAction<Project>>;
   activeScreen: Screen;
   setActiveScreenId: (screenId: string) => void;
   addScreen: (name: string) => void;
@@ -46,6 +47,7 @@ interface EditorContextType {
   selectedComponentIds: string[];
   selectedComponent: CanvasComponent | null;
   selectComponent: (id: string, multiSelect?: boolean) => void;
+  setSelectedComponentId: (id: string) => void;
   selectAllComponents: () => void;
   deselectAll: () => void;
   updateComponentProperties: (id: string, updates: Partial<CanvasComponent>, skipHistory?: boolean) => void;
@@ -193,6 +195,7 @@ interface EditorContextType {
 
   // Templates
   loadTemplateProject: (templateId: string) => void;
+  loadTemplate: (templateId: string) => void;
   resetProjectToBlank: () => void;
   createNewProject: (name: string, deviceId?: string) => void;
   importProjectJson: (jsonStr: string) => void;
@@ -1965,6 +1968,9 @@ export const EditorProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         deleteAsset,
 
         loadTemplateProject,
+        loadTemplate: loadTemplateProject,
+        setProject,
+        setSelectedComponentId: (id: string) => selectComponent(id),
         resetProjectToBlank,
         createNewProject,
         importProjectJson,

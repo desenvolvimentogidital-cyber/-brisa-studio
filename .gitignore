@@ -1,1 +1,17 @@
-git rm -r --cached dist-electron
+# Dependencies
+node_modules/
+
+# Production / Build output
+dist/
+dist-electron/
+build/
+release/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+Thumbs.db
