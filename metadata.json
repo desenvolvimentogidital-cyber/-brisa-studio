@@ -1,0 +1,9 @@
+{
+  "name": "Mobile Studio",
+  "version": "1.0.0",
+  "status": "Stable Release",
+  "certification": "Production Ready / Commercial Ready",
+  "description": "Enterprise-grade mobile app visual builder platform with real-time design, interactive prototyping, logic builder, database designer, multi-platform export engine (Flutter, React Native, Kotlin, SwiftUI, HTML/PWA), SDK marketplace, and DevOps pipeline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

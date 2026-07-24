@@ -1,0 +1,93 @@
+# ==========================================
+# Mobile Studio - Electron Builder Configuration
+# ==========================================
+# Professional Windows installer configuration.
+
+appId: com.mobilestudio.app
+productName: Mobile Studio
+copyright: Copyright © 2024 Mobile Studio
+
+directories:
+  output: dist-electron
+  buildResources: build
+
+files:
+  - dist/**/*
+  - electron/**/*
+  - package.json
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+    - target: zip
+      arch:
+        - x64
+  icon: build/icon.ico
+  artifactName: ${productName}-Setup-${version}.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Mobile Studio
+  uninstallDisplayName: Mobile Studio
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  installerHeaderIcon: build/icon.ico
+  license: LICENSE.txt
+  runAfterFinish: true
+  deleteAppDataOnUninstall: false
+
+portable:
+  artifactName: ${productName}-Portable-${version}.${ext}
+
+extraResources:
+  - from: build/
+    to: build/
+    filter:
+      - "**/*"
+
+# File association for .msproj files
+fileAssociations:
+  - ext: msproj
+    name: Mobile Studio Project
+    description: Mobile Studio Project File
+    icon: build/msproj-icon.ico
+    role: Editor
+
+# Auto-updater configuration
+publish:
+  provider: generic
+  url: https://updates.mobilestudio.app
+  channel: latest
+
+# macOS configuration (prepared for future)
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  icon: build/icon.icns
+  category: public.app-category.developer-tools
+  artifactName: ${productName}-${version}-${arch}.${ext}
+
+# Linux configuration (prepared for future)
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+  icon: build/icon.png
+  category: Development
+  artifactName: ${productName}-${version}-${arch}.${ext}
